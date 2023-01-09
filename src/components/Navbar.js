@@ -6,10 +6,13 @@ import Cookies from "universal-cookie";
 
 const Navbar = (props) => {
     const [userData, setUserData] = useState(false);
+    const [userFirstName, setUserFirstName] = useState('');
     const cookie = new Cookies();
     const history = useHistory();
     useEffect(()=>{
         let user = localStorage.getItem('userId');
+        let userFirstName1 = localStorage.getItem('userFirstName');
+        if(userFirstName1)setUserFirstName(userFirstName1);
         let token = cookie.get('token', { path: '/' })
         if(!user || !token ){
             localStorage.clear();
@@ -30,7 +33,7 @@ const Navbar = (props) => {
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="d-flex justify-content-end collapse navbar-collapse" id="navbarSupportedContent">
+            <div className="jce collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     {userData ?
                         <>
@@ -47,7 +50,7 @@ const Navbar = (props) => {
                                 <NavLink className="nav-link" onClick={props.logoutUser} to="/login">Logout</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link disabled" to="#">Hello! {userData}</NavLink>
+                                <NavLink className="nav-link disabled" to="#">Hello! {'    '} {userFirstName}</NavLink>
                             </li>
                         </> : <>
                             <li className="nav-item">

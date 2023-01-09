@@ -59,7 +59,7 @@ const SignUp = () => {
     };
     return (
         <>
-            <div className='login_div'>
+            <div className='container  login_div'>
                 <Card hoverable title="SignUp">
                     <Form
                         name="basic"

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Space, Table, Tag, Divider, Button } from 'antd';
+import { Space, Table, Tag, Divider, Button,Layout } from 'antd';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import backendUrl from './BackendUrl';
 import { useHistory } from 'react-router-dom';
+
+const { Content } = Layout;
 
 const columns = [
     {
@@ -45,13 +48,29 @@ const columns = [
     {
         title: 'Link',
         key: 'link',
-        render: () => (
-            <Button type="primary">
-                Show Link
+        render: (item) => (
+            
+            <Button type="primary" onClick={()=>copyLink(item)}>
+                Copy Link
             </Button>
         ),
     },
 ];
+
+const copyLink = (item)=>{
+    let linkk = window.location.href+item._id;
+    toast.success("Copied!!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+    navigator.clipboard.writeText(linkk);
+}
 
 const Home = (props) => {
     const cookie = new Cookies();
@@ -98,8 +117,14 @@ const Home = (props) => {
         }
     }
     return <>
-        <Divider />
-        <Table columns={columns} dataSource={data} />
+        <Layout>
+            <Content className='content'>
+                <div className='container'>
+                    <Divider />
+                    <Table columns={columns} dataSource={data} />
+                </div>
+            </Content>
+        </Layout>
     </>
 }
 

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
-import { Divider, Table, Button, Modal, Input, Form, Select } from 'antd';
+import { Divider, Table, Button, Modal, Input, Form, Select,Layout } from 'antd';
 import axios from 'axios';
 import backendUrl from './BackendUrl';
 import { useHistory } from 'react-router-dom';
+
+const { Content } = Layout;
 
 
 const CreateQuize = () => {
@@ -202,69 +204,73 @@ const CreateQuize = () => {
     }
 
     return (
-        <div>
-            <Divider />
-            <Button type="primary" onClick={showModal}>
-                Create Quize
-            </Button>
-            <Modal title="Create Quize" open={isModalOpen} onCancel={handleCancel} footer={null}>
-                <Form
-                    name="basic"
-                    labelCol={{
-                        span: 8,
-                    }}
-                    wrapperCol={{
-                        span: 16,
-                    }}
-                    initialValues={{
-                        remember: true,
-                    }}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
-                    autoComplete="off"
-                >
-                    <Form.Item
-                        label="Title"
-                        name="title"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your title!',
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item label="Difficulty Level" name='level'>
-                        <Select>
-                            <Select.Option value="1" >1</Select.Option>
-                            <Select.Option value="2">2</Select.Option>
-                            <Select.Option value="3" >3</Select.Option>
-                            <Select.Option value="4">4</Select.Option>
-                            <Select.Option value="5" >5</Select.Option>
-                            <Select.Option value="6">6</Select.Option>
-                            <Select.Option value="7" >7</Select.Option>
-                            <Select.Option value="8">8</Select.Option>
-                            <Select.Option value="9" >9</Select.Option>
-                            <Select.Option value="10">10</Select.Option>
-                        </Select>
-                    </Form.Item>
-
-                    <Button type="primary" htmlType="submit">
-                        Submit
+        <Layout>
+            <Content className='content'>
+                <div className='container'>
+                    <Divider />
+                    <Button type="primary" onClick={showModal}>
+                        Create Quize
                     </Button>
-                </Form>
-            </Modal>
-            <Table
-                rowSelection={{
-                    type: selectionType,
-                    ...rowSelection,
-                }}
-                columns={columns}
-                dataSource={data}
-            />
-        </div>
+                    <Modal title="Create Quize" open={isModalOpen} onCancel={handleCancel} footer={null}>
+                        <Form
+                            name="basic"
+                            labelCol={{
+                                span: 8,
+                            }}
+                            wrapperCol={{
+                                span: 16,
+                            }}
+                            initialValues={{
+                                remember: true,
+                            }}
+                            onFinish={onFinish}
+                            onFinishFailed={onFinishFailed}
+                            autoComplete="off"
+                        >
+                            <Form.Item
+                                label="Title"
+                                name="title"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your title!',
+                                    },
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
+
+                            <Form.Item label="Difficulty Level" name='level'>
+                                <Select>
+                                    <Select.Option value="1" >1</Select.Option>
+                                    <Select.Option value="2">2</Select.Option>
+                                    <Select.Option value="3" >3</Select.Option>
+                                    <Select.Option value="4">4</Select.Option>
+                                    <Select.Option value="5" >5</Select.Option>
+                                    <Select.Option value="6">6</Select.Option>
+                                    <Select.Option value="7" >7</Select.Option>
+                                    <Select.Option value="8">8</Select.Option>
+                                    <Select.Option value="9" >9</Select.Option>
+                                    <Select.Option value="10">10</Select.Option>
+                                </Select>
+                            </Form.Item>
+
+                            <Button type="primary" htmlType="submit">
+                                Submit
+                            </Button>
+                        </Form>
+                    </Modal>
+                    <Table
+                        rowSelection={{
+                            type: selectionType,
+                            ...rowSelection,
+                        }}
+                        columns={columns}
+                        dataSource={data}
+                    />
+                </div>
+            </Content>
+        </Layout>
     );
 };
 export default CreateQuize;

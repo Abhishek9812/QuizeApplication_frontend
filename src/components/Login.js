@@ -58,7 +58,7 @@ const Login = (props) => {
     };
     return (
         <>
-            <div className='login_div'>
+            <div className='container login_div'>
                 <Card hoverable title="Login"
                     style={{
                         marginTop: "100px",
