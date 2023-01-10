@@ -13,8 +13,6 @@ import { useEffect, useState } from 'react';
 import Cookies from "universal-cookie";
 import CreateQuestion from './components/CreateQuestion';
 import CreateQuize from './components/CreateQuize';
-import {Layout} from 'antd';
-const { Content } = Layout;
 
 function App() {
   const [userData, setUserData] = useState('');

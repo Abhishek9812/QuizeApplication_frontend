@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import { Divider, Table, Button, Modal, Input, Form, Select,Layout } from 'antd';
 import axios from 'axios';
-import backendUrl from './BackendUrl';
+// import backendUrl from './BackendUrl';
 import { useHistory } from 'react-router-dom';
 
 const { Content } = Layout;
@@ -93,7 +93,7 @@ const CreateQuize = () => {
 
     const getQuestions = async () => {
         try {
-            await axios.get(`${backendUrl}/getAllQuestions`, {
+            await axios.get(`/api/v1/getAllQuestions`, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }
@@ -156,7 +156,7 @@ const CreateQuize = () => {
         }
         console.log("quizeData :-> ", data);
         try {
-            await axios.post(`${backendUrl}/createQuize`, data, {
+            await axios.post(`/api/v1/createQuize`, data, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }

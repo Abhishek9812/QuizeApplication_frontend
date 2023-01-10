@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, Input, Card, Select,InputNumber } from 'antd';
 import { toast } from 'react-toastify';
-import backendUrl from './BackendUrl';
+// import backendUrl from './BackendUrl';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ const SignUp = () => {
             return;
         }
 
-        await axios.post(`${backendUrl}/signUpcustomer`, values)
+        await axios.post(`/api/v1/signUpcustomer`, values)
             .then((res) => {
                 console.log("Login Result:-> ", res);
                 if (res.data.code === 206) {

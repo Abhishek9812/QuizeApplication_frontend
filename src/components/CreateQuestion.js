@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, Card, Radio, Select, Col, Row, Checkbox,Layout } from 'antd';
 import { toast } from 'react-toastify';
-import backendUrl from './BackendUrl';
+// import backendUrl from './BackendUrl';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -28,7 +28,7 @@ const CreateQuestion = (props) => {
     const onFinish = async (values) => {
         console.log('Question:', values);
         try {
-            await axios.post(`${backendUrl}/createQuestion`, values, {
+            await axios.post(`/api/v1/createQuestion`, values, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }

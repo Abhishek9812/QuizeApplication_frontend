@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, Input, Card } from 'antd';
 import { toast } from 'react-toastify';
-import backendUrl from './BackendUrl';
+// import backendUrl from './BackendUrl';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -12,7 +12,7 @@ const Login = (props) => {
     const onFinish = async (values) => {
         console.log('Success:', values);
 
-        await axios.post(`${backendUrl}/logincustomer`, values)
+        await axios.post(`/api/v1/logincustomer`, values)
             .then((res) => {
 
                 console.log("Login Result:-> ", res);

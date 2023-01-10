@@ -3,7 +3,7 @@ import { Space, Table, Tag, Divider, Button,Layout } from 'antd';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
-import backendUrl from './BackendUrl';
+// import backendUrl from './BackendUrl';
 import { useHistory } from 'react-router-dom';
 
 const { Content } = Layout;
@@ -94,7 +94,7 @@ const Home = (props) => {
 
     const getAllQuizes = async () => {
         try {
-            await axios.get(`${backendUrl}/getAllQuize`, {
+            await axios.get(`/api/v1/getAllQuize`, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }
