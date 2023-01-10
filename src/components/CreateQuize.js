@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 const { Content } = Layout;
+const url = 'https://blue-violet-dalmatian-tux.cyclic.app/';
 
 
 const CreateQuize = () => {
@@ -93,7 +94,7 @@ const CreateQuize = () => {
 
     const getQuestions = async () => {
         try {
-            await axios.get(`/api/v1/getAllQuestions`, {
+            await axios.get(`${url}api/v1/getAllQuestions`, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }
@@ -156,7 +157,7 @@ const CreateQuize = () => {
         }
         console.log("quizeData :-> ", data);
         try {
-            await axios.post(`/api/v1/createQuize`, data, {
+            await axios.post(`${url}/api/v1/createQuize`, data, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }

@@ -7,6 +7,7 @@ import Cookies from 'universal-cookie';
 import { useHistory } from 'react-router-dom';
 
 const { Content } = Layout;
+const url = 'https://blue-violet-dalmatian-tux.cyclic.app/';
 
 const columns = [
     {
@@ -94,7 +95,7 @@ const Home = (props) => {
 
     const getAllQuizes = async () => {
         try {
-            await axios.get(`/api/v1/getAllQuize`, {
+            await axios.get(`${url}api/v1/getAllQuize`, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }

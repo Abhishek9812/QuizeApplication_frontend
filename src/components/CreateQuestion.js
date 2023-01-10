@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 const { TextArea } = Input;
 
 const { Content } = Layout;
+const url = 'https://blue-violet-dalmatian-tux.cyclic.app/';
 
 
 const CreateQuestion = (props) => {
@@ -28,7 +29,7 @@ const CreateQuestion = (props) => {
     const onFinish = async (values) => {
         console.log('Question:', values);
         try {
-            await axios.post(`/api/v1/createQuestion`, values, {
+            await axios.post(`${url}api/v1/createQuestion`, values, {
                 headers: {
                     authorization: cookie.get('token', { path: '/' }),
                 }
